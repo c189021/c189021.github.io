@@ -78,6 +78,49 @@
     --bs-code-color: #d63384;
     --bs-highlight-bg: #fff3cd;
 }
+/*footer 아이콘 효과*/
+/* 소셜 버튼 공통 스타일 */
+.btn-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    margin: 0 5px;
+    background-color: transparent;
+    transition: background-color 0.3s, filter 0.3s;
+    text-decoration: none;
+}
+
+/* hover 시 배경 반전 */
+.btn-social:hover {
+    background-color: #fff;
+}
+
+/* Font Awesome 아이콘 스타일 */
+.btn-social i {
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.btn-social:hover i {
+    color: #000;
+}
+
+/* 이미지 아이콘 스타일 */
+.icon-img {
+    width: 20px;
+    height: 20px;
+    transition: filter 0.3s;
+}
+
+/* 이미지 hover 반전 효과 */
+.btn-social:hover .icon-img {
+    filter: brightness(0) invert(1);
+}
+
 
 *,
 *::before,
