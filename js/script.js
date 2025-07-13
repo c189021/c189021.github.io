@@ -7,53 +7,49 @@
 // Scripts
 //
 
-window.addEventListener('DOMContentLoaded', event => {
+window.addEventListener('DOMContentLoaded', event => { //
 
     // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
-            return;
+    var navbarShrink = function () { //
+        const navbarCollapsible = document.body.querySelector('#mainNav'); //
+        if (!navbarCollapsible) { //
+            return; //
         }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
+        if (window.scrollY === 0) { //
+            navbarCollapsible.classList.remove('navbar-shrink') //
         } else {
-            navbarCollapsible.classList.add('navbar-shrink')
+            navbarCollapsible.classList.add('navbar-shrink') //
         }
-
     };
 
     // Shrink the navbar
-    navbarShrink();
+    navbarShrink(); //
 
     // Shrink the navbar when page is scrolled
-    document.addEventListener('scroll', navbarShrink);
+    document.addEventListener('scroll', navbarShrink); //
 
     // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            rootMargin: '0px 0px -40%',
+    const mainNav = document.body.querySelector('#mainNav'); //
+    if (mainNav) { //
+        new bootstrap.ScrollSpy(document.body, { //
+            target: '#mainNav', //
+            rootMargin: '0px 0px -40%', //
         });
     };
 
     // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
+    const navbarToggler = document.body.querySelector('.navbar-toggler'); //
+    const responsiveNavItems = [].slice.call( //
+        document.querySelectorAll('#navbarResponsive .nav-link') //
     );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
+    responsiveNavItems.map(function (responsiveNavItem) { //
+        responsiveNavItem.addEventListener('click', () => { //
+            if (window.getComputedStyle(navbarToggler).display !== 'none') { //
+                navbarToggler.click(); //
             }
         });
     });
 
-});
-
-document.addEventListener('DOMContentLoaded', function() {
     // Language Toggle Functionality
     const langToggleBtn = document.getElementById('lang-toggle');
     let currentLang = 'ko'; // Default language is Korean
@@ -75,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
             react: 'React',
             python: 'Python',
             // Contact Section
-            contactHeading: '문의하기',
             fullNameLabel: '이름',
             nameRequired: '이름을 입력해주세요.',
             emailLabel: '이메일 주소',
@@ -89,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formActivate: '이 양식을 활성화하려면 다음에서 가입하세요.',
             formError: '메시지 전송 오류!',
             sendButton: '보내기',
+            contactHeading: '문의하기',
             // Footer
             locationHeading: '위치',
             locationText: `홍익대학교<br />소프트웨어융합학과`,
@@ -129,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
             react: 'React',
             python: 'Python',
             // Contact Section
-            contactHeading: 'Contact Me',
             fullNameLabel: 'Full name',
             nameRequired: 'A name is required.',
             emailLabel: 'Email address',
@@ -143,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formActivate: 'To activate this form, sign up at',
             formError: 'Error sending message!',
             sendButton: 'Send',
+            contactHeading: 'Contact Me',
             // Footer
             locationHeading: 'Location',
             locationText: `Hongik University<br />Department Software Communication`,
@@ -195,57 +191,57 @@ document.addEventListener('DOMContentLoaded', function() {
     updateContent();
 
     // Portfolio Modal Navigation (Existing Code)
-    const portfolioModals = document.querySelectorAll('.portfolio-modal');
-    const totalModals = portfolioModals.length;
-    let currentModalIndex = -1;
+    const portfolioModals = document.querySelectorAll('.portfolio-modal'); //
+    const totalModals = portfolioModals.length; //
+    let currentModalIndex = -1; //
 
-    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(trigger => {
-        trigger.addEventListener('click', function() {
-            const targetModalId = this.getAttribute('data-bs-target');
-            const targetModalElement = document.querySelector(targetModalId);
+    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(trigger => { //
+        trigger.addEventListener('click', function() { //
+            const targetModalId = this.getAttribute('data-bs-target'); //
+            const targetModalElement = document.querySelector(targetModalId); //
 
-            for (let i = 0; i < totalModals; i++) {
-                if (portfolioModals[i] === targetModalElement) {
-                    currentModalIndex = i;
-                    break;
+            for (let i = 0; i < totalModals; i++) { //
+                if (portfolioModals[i] === targetModalElement) { //
+                    currentModalIndex = i; //
+                    break; //
                 }
             }
         });
     });
 
-    document.querySelectorAll('.prev-project-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const currentModal = portfolioModals[currentModalIndex];
-            const bsModal = bootstrap.Modal.getInstance(currentModal) || new bootstrap.Modal(currentModal);
-            bsModal.hide();
+    document.querySelectorAll('.prev-project-btn').forEach(button => { //
+        button.addEventListener('click', function() { //
+            const currentModal = portfolioModals[currentModalIndex]; //
+            const bsModal = bootstrap.Modal.getInstance(currentModal) || new bootstrap.Modal(currentModal); //
+            bsModal.hide(); //
 
-            if (currentModalIndex === 0) {
-                currentModalIndex = totalModals - 1;
+            if (currentModalIndex === 0) { //
+                currentModalIndex = totalModals - 1; //
             } else {
-                currentModalIndex--;
+                currentModalIndex--; //
             }
 
-            const prevModal = portfolioModals[currentModalIndex];
-            const bsPrevModal = bootstrap.Modal.getInstance(prevModal) || new bootstrap.Modal(prevModal);
-            bsPrevModal.show();
+            const prevModal = portfolioModals[currentModalIndex]; //
+            const bsPrevModal = bootstrap.Modal.getInstance(prevModal) || new bootstrap.Modal(prevModal); //
+            bsPrevModal.show(); //
         });
     });
 
-    document.querySelectorAll('.next-project-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const currentModal = portfolioModals[currentModalIndex];
-            const bsModal = bootstrap.Modal.getInstance(currentModal) || new bootstrap.Modal(currentModal);
-            bsModal.hide();
+    document.querySelectorAll('.next-project-btn').forEach(button => { //
+        button.addEventListener('click', function() { //
+            const currentModal = portfolioModals[currentModalIndex]; //
+            const bsModal = bootstrap.Modal.getInstance(currentModal) || new bootstrap.Modal(currentModal); //
+            bsModal.hide(); //
 
-            if (currentModalIndex === totalModals - 1) {
-                currentModalIndex = 0;
+            if (currentModalIndex === totalModals - 1) { //
+                currentModalIndex = 0; //
             } else {
-                currentModalIndex++;
+                currentModalIndex++; //
             }
 
-            const nextModal = portfolioModals[currentModalIndex];
-            const bsNextModal = bootstrap.Modal.getInstance(nextModal) || new bootstrap.Modal(nextModal);
-            bsNextModal.show();
+            const nextModal = portfolioModals[currentModalIndex]; //
+            const bsNextModal = bootstrap.Modal.getInstance(nextModal) || new bootstrap.Modal(nextModal); //
+            bsNextModal.show(); //
         });
     });
 });
